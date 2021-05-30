@@ -1,0 +1,32 @@
+server:
+  port: 6700
+
+spring:
+  application:
+    name: nacos-product-provider-6700
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  #数据库连接池配置
+  datasource:
+    username: root
+    password: admin
+    #假如时区报错，增加时区配置serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/nacosproduct?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #sentinel:
+      #transport:
+        #dashboard: localhost:8080
+        #port: 8719
+#整合mybatis配置
+mybatis:
+  #config-location: classpath:mybatis/mybatis-config.xml  使用了configuration注解则无需再指定mybatis-config.xml文件
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:   #指定mybatis全局配置文件中的相关配置项
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.fengye.springcloud.entities
+
+#消费者将要去访问的微服务名称
+server-url:
+  nacos-user-service: http://nacos-product-provider
