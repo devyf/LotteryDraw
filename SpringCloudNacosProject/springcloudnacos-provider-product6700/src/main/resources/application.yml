@@ -19,13 +19,21 @@ spring:
       #transport:
         #dashboard: localhost:8080
         #port: 8719
-#整合mybatis配置
-mybatis:
-  #config-location: classpath:mybatis/mybatis-config.xml  使用了configuration注解则无需再指定mybatis-config.xml文件
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  configuration:   #指定mybatis全局配置文件中的相关配置项
-    map-underscore-to-camel-case: true
+
+#整合mybatis-plus配置
+mybatis-plus:
+  #配置Mapper映射文件
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  # 配置Mybatis数据返回类型别名（默认别名为类名）
   type-aliases-package: com.fengye.springcloud.entities
+  configuration:
+    #自动驼峰命名
+    map-underscore-to-camel-case: false
+
+#配置控制台打印日志Debug
+logging:
+  level:
+    com.jd.mapper: debug
 
 #消费者将要去访问的微服务名称
 server-url:

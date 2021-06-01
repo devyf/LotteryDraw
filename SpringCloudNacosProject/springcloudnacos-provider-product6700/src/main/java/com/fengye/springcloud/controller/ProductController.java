@@ -106,13 +106,18 @@ public class ProductController {
      */
     @PostMapping(value = "/provider/insert")
     public Integer insertProduct(@RequestBody Product product) {
+        //需要判断单个商品的概率是否大于100%
+        int pVal = new BigDecimal(product.getWinRate() * 100).intValue();
+        if(pVal > 100){
+            return -2;
+        }
         int sum = productService.getProductList()
                 .stream()
                 .map(p -> new BigDecimal(p.getWinRate() * 100).intValue()).mapToInt(p -> p).sum();
-        int pVal = new BigDecimal(product.getWinRate() * 100).intValue();
+
         int newRes = sum + pVal;
         //结果相加大于1，概率超过100%，返回-2，表示概率超过限制
-        if((pVal + newRes) > 100){
+        if(newRes > 100){
             return -2;
         }
         return productService.insertProduct(product);

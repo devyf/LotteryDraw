@@ -20,16 +20,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(Integer id) {
-        return productMapper.getProductById(id);
+        return productMapper.selectById(id);
     }
 
     @Override
     public List<Product> getProductList() {
-        return productMapper.getAllProducts();
+        return productMapper.selectList(null);
     }
 
     @Override
     public Integer insertProduct(Product product) {
-        return productMapper.insertProduct(product);
+        return productMapper.insert(product);
     }
 }

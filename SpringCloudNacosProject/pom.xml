@@ -26,7 +26,7 @@
         <lombok.version>1.16.18</lombok.version>
         <mysql.version>6.0.6</mysql.version>
         <druid.version>1.1.16</druid.version>
-        <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
+        <mybatis.plus.version>3.3.2</mybatis.plus.version>
         <springboot.starter.web>2.4.3</springboot.starter.web>
     </properties>
 
@@ -75,11 +75,11 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
-        <!--mybatis orm框架-->
+        <!--mybatis-plus插件-->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.spring.boot.version}</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
         </dependency>
         <!--lombok插件引入-->
         <dependency>
